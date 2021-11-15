@@ -1,12 +1,5 @@
 import { Container } from "./styles";
-import {
-  FiUser,
-  FiMail,
-  FiLock,
-  FiPhone,
-  FiBook,
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiUser, FiLock } from "react-icons/fi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

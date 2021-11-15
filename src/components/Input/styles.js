@@ -2,15 +2,24 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  background-color: var(--grey-50);
+
   input {
-    background-color: var(--grey-50);
     border: none;
     height: 30px;
+    margin: 20px 0px 20px 5px;
+
+    :focus {
+      background-color: violet;
+
+      ::placeholder {
+        color: black;
+      }
+    }
   }
 `;
 
 export const ContainerInput = styled.div`
   display: flex;
-  background-color: var(--grey-50);
+  justify-content: center;
+  align-items: center;
 `;
