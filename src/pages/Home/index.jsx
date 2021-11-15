@@ -36,25 +36,30 @@ function Home() {
   };
 
   return (
-    <Container onSubmit={handleSubmit(onSubmitFunction)}>
-      <Input
-        icon={FiUser}
-        type="email"
-        placeholder="Email"
-        register={register}
-        name="email"
-        error={errors.email?.message}
-      />
-      <Input
-        icon={FiLock}
-        type="password"
-        placeholder="Senha"
-        register={register}
-        name="password"
-        error={errors.password?.message}
-      />
-      <Button type="submit">Login</Button>
-    </Container>
+    <>
+      <Container onSubmit={handleSubmit(onSubmitFunction)}>
+        <Input
+          icon={FiUser}
+          type="email"
+          placeholder="Email"
+          register={register}
+          name="email"
+          error={errors.email?.message}
+        />
+        <Input
+          icon={FiLock}
+          type="password"
+          placeholder="Senha"
+          register={register}
+          name="password"
+          error={errors.password?.message}
+        />
+        <Button type="submit">LOGIN</Button>
+      </Container>
+
+      <p>Criar uma Página para mostar suas habilidades metas e progresso</p>
+      <Button onClick={() => history.push("/registration")}>CADASTRAR</Button>
+    </>
   );
 }
 

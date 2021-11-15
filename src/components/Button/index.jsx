@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 
-function Button({ children }) {
-  return <Container>{children}</Container>;
+function Button({ children, onClick }) {
+  return <Container onClick={onClick}>{children}</Container>;
 }
 
 export default Button;
