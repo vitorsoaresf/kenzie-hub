@@ -8,7 +8,6 @@ import { useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { FiArrowRight, FiArrowDown, FiArrowLeft } from "react-icons/fi";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
 import api from "../../services/api";
 
 function Dashboard({ authenticated, setAuthenticated }) {
@@ -26,9 +25,22 @@ function Dashboard({ authenticated, setAuthenticated }) {
   const [newWorkDescription, setNewWorkDescription] = useState("");
 
   const history = useHistory();
+
   if (!authenticated) {
     return <Redirect to="/" />;
   }
+
+  const handleClickNewTech = ({ ...rest }) => {
+    user.techs = [...user.techs, rest];
+    // PAREI AQUI!! TENTAR MANDAR ESSA REQUISICAO
+    // api.post(`users/${user.id}`)
+    setRegisterTech(false);
+  };
+
+  const handleClickNewWork = ({ ...rest }) => {
+    user.works = [...user.works, rest];
+    setRegisterWork(false);
+  };
 
   return (
     <Container>
@@ -36,7 +48,6 @@ function Dashboard({ authenticated, setAuthenticated }) {
       <ContainerData>
         <div>
           <p>Kenzie Hub</p>
-          {/* <img /> */}
           <Button
             onClick={() => {
               setAuthenticated(false);
@@ -73,12 +84,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
               <input onChange={(evt) => setNewTechStatus(evt.target.value)} />
               <Button
                 onClick={() => {
-                  const tech = { title: newTech, status: newTechStatus };
-                  user.techs = [...user.techs, tech];
-
-                  // PAREI AQUI!! TENTAR MANDAR ESSA REQUISICAO
-                  // api.post(`users/${user.id}`)
-                  setRegisterTech(false);
+                  handleClickNewTech({ title: newTech, status: newTechStatus });
                 }}
               >
                 Cadastrar
@@ -116,14 +122,12 @@ function Dashboard({ authenticated, setAuthenticated }) {
                 onChange={(evt) => setNewWorkDescription(evt.target.value)}
               />
               <Button
-                onClick={() => {
-                  const work = {
+                onClick={() =>
+                  handleClickNewWork({
                     title: newWork,
                     description: newWorkDescription,
-                  };
-                  user.works = [...user.works, work];
-                  setRegisterWork(false);
-                }}
+                  })
+                }
               >
                 Cadastrar
               </Button>
