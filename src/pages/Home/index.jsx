@@ -13,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import api from "../../services/api";
 
 function Home() {
   const formSchema = yup.object().shape({
@@ -29,7 +30,10 @@ function Home() {
   });
 
   const onSubmitFunction = (data) => {
-    console.log(data);
+    api
+      .post("/sessions", data)
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log("kkkk", err));
   };
 
   return (
