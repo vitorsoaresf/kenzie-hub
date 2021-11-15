@@ -28,10 +28,11 @@ function Home() {
   const onSubmitFunction = (data) => {
     api
       .post("/sessions", data)
-      .then((response) => console.log(response.data))
+      .then((response) => {
+        console.log(response.data);
+        history.push("/dashboard");
+      })
       .catch((err) => console.log("kkkk", err));
-
-    history.push("/dashboard");
   };
 
   return (
