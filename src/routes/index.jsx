@@ -28,7 +28,10 @@ function Routes() {
           <Registration authenticated={authenticated} />
         </Route>
         <Route path="/dashboard">
-          <Dashboard authenticated={authenticated} />
+          <Dashboard
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/users">
           <Users />

@@ -1,17 +1,11 @@
 import { Container, ContainerData } from "./styles";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
-import api from "../../services/api";
-import { useParams, Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
-function Dashboard({ authenticated }) {
-  const [techs, setTechs] = useState([]);
-  const params = useParams();
-
-  useEffect(() => {
-    // api.get();
-  }, []);
-
+function Dashboard({ authenticated, setAuthenticated }) {
+  // const [techs, setTechs] = useState(localStorage.getItem());
+  const history = useHistory();
   if (!authenticated) {
     return <Redirect to="/" />;
   }
@@ -22,7 +16,15 @@ function Dashboard({ authenticated }) {
       <ContainerData>
         <div>
           <p>Kenzie Hub</p>
-          <img />
+          {/* <img /> */}
+          <Button
+            onClick={() => {
+              setAuthenticated(false);
+              localStorage.clear();
+            }}
+          >
+            Sair
+          </Button>
         </div>
       </ContainerData>
 
