@@ -3,13 +3,13 @@ import { FiUser, FiLock } from "react-icons/fi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
-function Home() {
+function Home({ authenticated, setAuthenticated }) {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -29,11 +29,18 @@ function Home() {
     api
       .post("/sessions", data)
       .then((response) => {
-        console.log(response.data);
-        history.push("/dashboard");
+        const { token, user } = response.data;
+        localStorage.setItem("@Kenziehub:token", JSON.stringify(token));
+        localStorage.setItem("@Kenziehub:user", JSON.stringify(user));
+        setAuthenticated(true);
+        history.push(`/dashboard`);
       })
-      .catch((err) => console.log("kkkk", err));
+      .catch((err) => console.log("Usuário não registrado!", err));
   };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <>
