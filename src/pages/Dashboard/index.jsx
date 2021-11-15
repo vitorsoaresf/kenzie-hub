@@ -4,7 +4,13 @@ import Button from "../../components/Button";
 import { Redirect, useHistory } from "react-router-dom";
 
 function Dashboard({ authenticated, setAuthenticated }) {
-  // const [techs, setTechs] = useState(localStorage.getItem());
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("@Kenziehub:user")) || []
+  );
+
+  const [registerTech, setRegisterTech] = useState(false);
+  const [registerWork, setRegisterWork] = useState(false);
+
   const history = useHistory();
   if (!authenticated) {
     return <Redirect to="/" />;
@@ -34,6 +40,11 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <p>Minhas Tecnologias</p>
           <Button>+</Button>
         </div>
+        <ul>
+          {user.techs.map((tech, index) => {
+            <li key={index}>{tech}</li>;
+          })}
+        </ul>
       </ContainerData>
 
       {/* MEUS TRABALHOS */}
