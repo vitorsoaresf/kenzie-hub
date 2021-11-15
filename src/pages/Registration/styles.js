@@ -17,3 +17,11 @@ export const ContainerUl = styled.ul`
   font-size: 0.7rem;
   list-style: none;
 `;
+
+export const ContainerModal = styled.div`
+  display: flex;
+  height: 100vh;
+
+  div {
+  }
+`;

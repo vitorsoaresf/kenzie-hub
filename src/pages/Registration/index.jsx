@@ -1,4 +1,4 @@
-import { Container, ContainerUl } from "./styles";
+import { Container, ContainerUl, ContainerModal } from "./styles";
 import {
   FiUser,
   FiMail,
@@ -15,8 +15,10 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
-
+import { useState } from "react";
 function Registration() {
+  const [registration, setRegistration] = useState(false);
+
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -47,72 +49,86 @@ function Registration() {
       .post("/users", data)
       .then((response) => {
         console.log(response);
+        setRegistration(true);
       })
       .catch((err) => console.log("Erro no Servidor", err));
+  };
 
+  const onClickModal = () => {
     history.push("/");
   };
 
   return (
-    <Container onSubmit={handleSubmit(onSubmitFunction)}>
-      <Input
-        icon={FiUser}
-        type="text"
-        placeholder="Nome"
-        register={register}
-        name="name"
-        error={errors.name?.message}
-      />
-      <Input
-        icon={FiMail}
-        type="email"
-        placeholder="Email"
-        register={register}
-        name="email"
-        error={errors.email?.message}
-      />
-      <Input
-        icon={FiBook}
-        type="text"
-        placeholder="Biografia"
-        register={register}
-        name="bio"
-        error={errors.bio?.message}
-      />
-      <Input
-        icon={FiPhone}
-        type="text"
-        placeholder="Telefone"
-        register={register}
-        name="contact"
-        error={errors.contact?.message}
-      />
-      <Input
-        icon={FiArrowRight}
-        type="text"
-        placeholder="Modulo"
-        register={register}
-        name="course_module"
-        error={errors.course_module?.message}
-      />
-      <Input
-        icon={FiLock}
-        type="password"
-        placeholder="Senha"
-        register={register}
-        name="password"
-        error={errors.password?.message}
-      />
-      <Input
-        icon={FiLock}
-        type="password"
-        placeholder="Confirmar Senha"
-        register={register}
-        name="confirm_password"
-        error={errors.confirm_password?.message}
-      />
-      <Button type="submit">Cadastrar</Button>
-    </Container>
+    <>
+      <Container onSubmit={handleSubmit(onSubmitFunction)}>
+        <Input
+          icon={FiUser}
+          type="text"
+          placeholder="Nome"
+          register={register}
+          name="name"
+          error={errors.name?.message}
+        />
+        <Input
+          icon={FiMail}
+          type="email"
+          placeholder="Email"
+          register={register}
+          name="email"
+          error={errors.email?.message}
+        />
+        <Input
+          icon={FiBook}
+          type="text"
+          placeholder="Biografia"
+          register={register}
+          name="bio"
+          error={errors.bio?.message}
+        />
+        <Input
+          icon={FiPhone}
+          type="text"
+          placeholder="Telefone"
+          register={register}
+          name="contact"
+          error={errors.contact?.message}
+        />
+        <Input
+          icon={FiArrowRight}
+          type="text"
+          placeholder="Modulo"
+          register={register}
+          name="course_module"
+          error={errors.course_module?.message}
+        />
+        <Input
+          icon={FiLock}
+          type="password"
+          placeholder="Senha"
+          register={register}
+          name="password"
+          error={errors.password?.message}
+        />
+        <Input
+          icon={FiLock}
+          type="password"
+          placeholder="Confirmar Senha"
+          register={register}
+          name="confirm_password"
+          error={errors.confirm_password?.message}
+        />
+        <Button type="submit">Cadastrar</Button>
+      </Container>
+
+      {registration && (
+        <ContainerModal>
+          <div>
+            <p>Olaa</p>
+            <Button onClick={() => history.push("/")}>Yes</Button>
+          </div>
+        </ContainerModal>
+      )}
+    </>
   );
 }
 
