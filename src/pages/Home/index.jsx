@@ -3,12 +3,15 @@ import { FiUser, FiLock } from "react-icons/fi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useHistory } from "react-router-dom";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
 function Home() {
+  const history = useHistory();
+
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
     password: yup.string().required("Senha obrigatório"),
@@ -27,6 +30,8 @@ function Home() {
       .post("/sessions", data)
       .then((response) => console.log(response.data))
       .catch((err) => console.log("kkkk", err));
+
+    history.push("/dashboard");
   };
 
   return (

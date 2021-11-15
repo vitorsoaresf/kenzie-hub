@@ -14,9 +14,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import api from "../../services/api";
-import { useLayoutEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 function Registration() {
+  const history = useHistory();
+
   const formSchema = yup.object().shape({
     name: yup.string().required("Nome obrigatório"),
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -41,11 +43,14 @@ function Registration() {
   });
 
   const onSubmitFunction = (data) => {
-    console.log(data);
     api
       .post("/users", data)
-      .then((response) => console.log(response.data))
-      .catch((err) => console.log("kkkk", err));
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log("Erro no Servidor", err));
+
+    history.push("/");
   };
 
   return (
