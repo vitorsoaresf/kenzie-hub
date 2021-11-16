@@ -64,7 +64,7 @@ export const ContainerModal = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
 
-  div {
+  form {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

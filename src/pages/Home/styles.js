@@ -6,4 +6,5 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   border: 1px solid var(--grey-50);
+  background-color: var(--white);
 `;

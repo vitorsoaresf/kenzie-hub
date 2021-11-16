@@ -5,42 +5,57 @@ import {
   ContainerUl,
 } from "./styles";
 import { useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { FiArrowRight, FiArrowDown, FiArrowLeft } from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
 function Dashboard({ authenticated, setAuthenticated }) {
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("@Kenziehub:user")) || []
+    JSON.parse(localStorage.getItem("@Kenziehub:user")) || ""
+  );
+
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("@Kenziehub:token")) || ""
   );
 
   const [registerTech, setRegisterTech] = useState(false);
   const [registerWork, setRegisterWork] = useState(false);
 
-  const [newTech, setNewTech] = useState("");
-  const [newTechStatus, setNewTechStatus] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({});
 
-  const [newWork, setNewWork] = useState("");
-  const [newWorkDescription, setNewWorkDescription] = useState("");
+  const onSubmitTech = (data) => {
+    api
+      .post("/users/techs", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log("OK");
+      })
+      .catch((err) => console.log("Usuário não registrado!", err));
+    setRegisterTech(false);
+  };
 
-  const history = useHistory();
+  const onSubmitWork = (data) => {
+    api
+      .post("/users/works", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log("OK");
+      })
+      .catch((err) => console.log("Usuário não registrado!", err));
+    setRegisterWork(false);
+  };
 
   if (!authenticated) {
     return <Redirect to="/" />;
   }
-
-  const handleClickNewTech = ({ ...rest }) => {
-    user.techs = [...user.techs, rest];
-    // PAREI AQUI!! TENTAR MANDAR ESSA REQUISICAO
-    // api.post(`users/${user.id}`)
-    setRegisterTech(false);
-  };
-
-  const handleClickNewWork = ({ ...rest }) => {
-    user.works = [...user.works, rest];
-    setRegisterWork(false);
-  };
 
   return (
     <Container>
@@ -78,18 +93,12 @@ function Dashboard({ authenticated, setAuthenticated }) {
         </ContainerUl>
         {registerTech && (
           <ContainerModal>
-            <div>
+            <form onSubmit={handleSubmit(onSubmitTech)}>
               <p>Casdastrar Tecnologia</p>
-              <input onChange={(evt) => setNewTech(evt.target.value)} />
-              <input onChange={(evt) => setNewTechStatus(evt.target.value)} />
-              <Button
-                onClick={() => {
-                  handleClickNewTech({ title: newTech, status: newTechStatus });
-                }}
-              >
-                Cadastrar
-              </Button>
-            </div>
+              <input {...register("title")} />
+              <input {...register("status")} />
+              <Button type="submit">Cadastrar</Button>
+            </form>
           </ContainerModal>
         )}
       </ContainerData>
@@ -115,23 +124,13 @@ function Dashboard({ authenticated, setAuthenticated }) {
         </ContainerUl>
         {registerWork && (
           <ContainerModal>
-            <div>
+            <form onSubmit={handleSubmit(onSubmitWork)}>
               <p>Casdastrar Trabalho</p>
-              <input onChange={(evt) => setNewWork(evt.target.value)} />
-              <input
-                onChange={(evt) => setNewWorkDescription(evt.target.value)}
-              />
-              <Button
-                onClick={() =>
-                  handleClickNewWork({
-                    title: newWork,
-                    description: newWorkDescription,
-                  })
-                }
-              >
-                Cadastrar
-              </Button>
-            </div>
+              <input {...register("title")} />
+              <input {...register("description")} />
+              <input {...register("deploy_url")} />
+              <Button type="submit">Cadastrar</Button>
+            </form>
           </ContainerModal>
         )}
       </ContainerData>
