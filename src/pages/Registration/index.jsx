@@ -30,7 +30,7 @@ function Registration() {
     password: yup
       .string()
       .required("Senha obrigatória")
-      .matches(/^.{6,}$/, "Quantidade Mínima de 8 caractteres"),
+      .matches(/^.{6,}$/, "Quantidade Mínima de 6 caractteres"),
     confirm_password: yup
       .string()
       .oneOf([yup.ref("password"), null], "Senhas diferentes!"),
