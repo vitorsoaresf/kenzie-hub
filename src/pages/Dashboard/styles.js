@@ -37,6 +37,7 @@ export const ContainerTitle = styled.div`
       border-radius: 5px;
     }
   }
+
   button {
     margin-right: 10px;
     border-radius: 100%;

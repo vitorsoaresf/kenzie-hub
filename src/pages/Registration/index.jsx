@@ -1,4 +1,9 @@
-import { Container, ContainerUl, ContainerModal } from "./styles";
+import {
+  Container,
+  ContainerUl,
+  ContainerRadio,
+  ContainerModal,
+} from "./styles";
 import {
   FiUser,
   FiMail,
@@ -93,14 +98,40 @@ function Registration() {
           name="contact"
           error={errors.contact?.message}
         />
-        <Input
+        {/* <Input
           icon={FiArrowRight}
           type="text"
           placeholder="Modulo"
           register={register}
           name="course_module"
           error={errors.course_module?.message}
-        />
+        /> */}
+        <ContainerRadio>
+          <div>
+            <input type="radio" id="primeiro" name="select" value="huey" />
+            <label for="primeiro">Primeiro</label>
+          </div>
+
+          <div>
+            <input type="radio" id="segundo" name="select" value="dewey" />
+            <label for="segundo">Segundo</label>
+          </div>
+
+          <div>
+            <input type="radio" id="terceiro" name="select" value="dewey" />
+            <label for="terceiro">Terceiro</label>
+          </div>
+
+          <div>
+            <input type="radio" id="quarto" name="select" value="dewey" />
+            <label for="quarto">Quarto</label>
+          </div>
+
+          {/* <div>
+            <input type="radio" id="louie" name="drone" value="louie" />
+            <label for="louie">Louie</label>
+          </div> */}
+        </ContainerRadio>
         <Input
           icon={FiLock}
           type="password"

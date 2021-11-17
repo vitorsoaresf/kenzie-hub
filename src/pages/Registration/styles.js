@@ -25,3 +25,39 @@ export const ContainerModal = styled.div`
   div {
   }
 `;
+
+export const ContainerRadio = styled.div`
+  display: flex;
+  width: 290px;
+  margin: 10px 0;
+  height: 50px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    background-color: violet;
+    padding: 0;
+    width: 0px;
+    height: 0px;
+  }
+
+  input:focus + label {
+    background-color: blue;
+    background-color: var(--purple);
+    color: var(--white);
+  }
+
+  div {
+    background-color: violet;
+    label {
+      background-color: var(--grey-0);
+      font-size: 0.7rem;
+      color: var(--purple);
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+  }
+`;
