@@ -1,4 +1,4 @@
-import { Container } from "./styles";
+import { Container, ContainerForm, ContainerInfo } from "./styles";
 import { FiUser, FiLock } from "react-icons/fi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -43,8 +43,8 @@ function Home({ authenticated, setAuthenticated }) {
   }
 
   return (
-    <>
-      <Container onSubmit={handleSubmit(onSubmitFunction)}>
+    <Container>
+      <ContainerForm onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
           icon={FiUser}
           type="email"
@@ -61,12 +61,18 @@ function Home({ authenticated, setAuthenticated }) {
           name="password"
           error={errors.password?.message}
         />
-        <Button type="submit">LOGIN</Button>
-      </Container>
-
-      <p>Criar uma Página para mostar suas habilidades metas e progresso</p>
-      <Button onClick={() => history.push("/registration")}>CADASTRAR</Button>
-    </>
+        <Button color="purple" type="submit">
+          Logar
+        </Button>
+      </ContainerForm>
+      <ContainerInfo>
+        <span>Criar uma Página para mostar suas</span>
+        <p> habilidades metas e progresso</p>
+      </ContainerInfo>
+      <Button color="grey" onClick={() => history.push("/registration")}>
+        Cadastrar
+      </Button>
+    </Container>
   );
 }
 

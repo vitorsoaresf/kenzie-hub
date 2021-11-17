@@ -117,7 +117,9 @@ function Registration() {
           name="confirm_password"
           error={errors.confirm_password?.message}
         />
-        <Button type="submit">Cadastrar</Button>
+        <Button color="purple" type="submit">
+          Cadastrar
+        </Button>
       </Container>
 
       {registration && (

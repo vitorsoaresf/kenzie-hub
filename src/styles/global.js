@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;
         padding: 0;
-        background: var(--grey-0);
+        background: var(--white);
         font-family: 'Inter', sans-serif;
     }
 
