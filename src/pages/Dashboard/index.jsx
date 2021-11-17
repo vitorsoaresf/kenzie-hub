@@ -1,13 +1,15 @@
 import {
   Container,
-  ContainerData,
+  ContainerWorks,
   ContainerModal,
   ContainerUl,
+  ContainerTitle,
+  ContainerTechs,
 } from "./styles";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FiArrowRight, FiArrowDown, FiArrowLeft } from "react-icons/fi";
+import { FiArrowRight, FiUser, FiArrowLeft } from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
@@ -59,26 +61,27 @@ function Dashboard({ authenticated, setAuthenticated }) {
 
   return (
     <Container>
-      {/* HEADER */}
-      <ContainerData>
+      <ContainerTitle>
         <div>
-          <p>Kenzie Hub</p>
-          <Button
-            onClick={() => {
-              setAuthenticated(false);
-              localStorage.clear();
-            }}
-          >
-            Sair
-          </Button>
+          <h1>Kenzie</h1>
+          <h2>Hub</h2>
         </div>
-      </ContainerData>
+
+        <button
+          onClick={() => {
+            setAuthenticated(false);
+            localStorage.clear();
+          }}
+        >
+          <FiUser />
+        </button>
+      </ContainerTitle>
 
       {/* MINHAS TECNOLOGIAS */}
-      <ContainerData>
+      <ContainerTechs>
         <div>
           <p>Minhas Tecnologias</p>
-          <Button onClick={() => setRegisterTech(true)}>+</Button>
+          <button onClick={() => setRegisterTech(true)}>+</button>
         </div>
         <ContainerUl>
           {user.techs.map((tech, index) => (
@@ -101,13 +104,13 @@ function Dashboard({ authenticated, setAuthenticated }) {
             </form>
           </ContainerModal>
         )}
-      </ContainerData>
+      </ContainerTechs>
 
       {/* MEUS TRABALHOS */}
-      <ContainerData>
+      <ContainerWorks>
         <div>
           <p>Meus Trabalhos</p>
-          <Button onClick={() => setRegisterWork(true)}>+</Button>
+          <button onClick={() => setRegisterWork(true)}>+</button>
         </div>
         <ContainerUl>
           {user.works.map((work, index) => (
@@ -133,7 +136,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
             </form>
           </ContainerModal>
         )}
-      </ContainerData>
+      </ContainerWorks>
     </Container>
   );
 }
