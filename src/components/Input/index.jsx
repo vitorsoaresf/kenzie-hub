@@ -1,6 +1,6 @@
 import { Container, ContainerInput } from "./styles";
 
-function Input({ icon: Icon, register, name, placeholder, ...rest }) {
+function Input({ icon: Icon, register, name, placeholder, error, ...rest }) {
   return (
     <Container>
       <ContainerInput>
@@ -8,6 +8,7 @@ function Input({ icon: Icon, register, name, placeholder, ...rest }) {
         <input {...register(name)} {...rest} placeholder=" " />
         <label>{placeholder}</label>
       </ContainerInput>
+      {error && <p>{error}</p>}
     </Container>
   );
 }

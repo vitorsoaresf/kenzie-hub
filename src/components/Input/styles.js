@@ -2,6 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 0.6rem;
+    position: relative;
+    color: red;
+    left: 0;
+    text-align: start;
+  }
 `;
 
 export const ContainerInput = styled.div`
@@ -11,14 +20,12 @@ export const ContainerInput = styled.div`
   position: relative;
   padding-top: 13px;
   color: var(--grey-50);
-  /* background-color: var(--grey-0); */
 
   input {
     background-color: var(--grey-0);
     width: 290px;
     height: 50px;
     border: 0;
-    /* border-bottom: 2px solid lightgrey; */
     outline: none;
     min-width: 180px;
     font-size: 16px;
@@ -27,6 +34,7 @@ export const ContainerInput = styled.div`
     -moz-transition: all 0.3s ease-out;
     -webkit-appearance: none;
     border-radius: 10px;
+    /* margin: 10px 0; */
   }
 
   input:focus {
