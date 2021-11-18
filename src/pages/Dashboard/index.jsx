@@ -79,10 +79,10 @@ function Dashboard({ authenticated, setAuthenticated }) {
 
       {/* MINHAS TECNOLOGIAS */}
       <ContainerTechs>
-        <div>
+        <section>
           <p>Minhas Tecnologias</p>
           <button onClick={() => setRegisterTech(true)}>+</button>
-        </div>
+        </section>
         <ContainerUl>
           {user.techs.map((tech, index) => (
             <li key={index}>
