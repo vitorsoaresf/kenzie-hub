@@ -10,12 +10,7 @@ import {
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {
-  FiArrowRight,
-  FiUser,
-  FiCodesandbox,
-  FiGitPullRequest,
-} from "react-icons/fi";
+import { FiUser, FiCodesandbox, FiGitPullRequest } from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
@@ -23,6 +18,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:user")) || ""
   );
+  const [userTechs, setUserTechs] = useState([]);
 
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:token")) || ""
@@ -34,6 +30,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({});
 
@@ -44,8 +41,13 @@ function Dashboard({ authenticated, setAuthenticated }) {
       })
       .then((response) => {
         console.log("OK");
+        console.log(response);
       })
       .catch((err) => console.log("Usuário não registrado!", err));
+
+    user.techs = [...user.techs, data];
+
+    reset();
     setRegisterTech(false);
   };
 
@@ -55,9 +57,15 @@ function Dashboard({ authenticated, setAuthenticated }) {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        console.log(response);
         console.log("OK");
       })
       .catch((err) => console.log("Usuário não registrado!", err));
+
+    if (data.title !== "" && data.status !== "") {
+      user.works = [...user.works, data];
+    }
+    reset();
     setRegisterWork(false);
   };
 
@@ -104,8 +112,8 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <ContainerModal>
             <form onSubmit={handleSubmit(onSubmitTech)}>
               <p>Casdastrar Tecnologia</p>
-              <input {...register("title")} />
-              <input {...register("status")} />
+              <input maxLength="15" {...register("title")} />
+              <input maxLength="15" {...register("status")} />
               <Button type="submit">Cadastrar</Button>
             </form>
           </ContainerModal>
@@ -121,7 +129,6 @@ function Dashboard({ authenticated, setAuthenticated }) {
         <ContainerUlWorks>
           {user.works.map((work, index) => (
             <li key={index}>
-              {/* <a href={work.deploy_url}> */}
               <h1>{<FiGitPullRequest />}</h1>
               <div>
                 <h3>{work.title}</h3>
@@ -130,7 +137,6 @@ function Dashboard({ authenticated, setAuthenticated }) {
                   Link da aplicação
                 </a>
               </div>
-              {/* </a> */}
             </li>
           ))}
         </ContainerUlWorks>
@@ -138,7 +144,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <ContainerModal>
             <form onSubmit={handleSubmit(onSubmitWork)}>
               <p>Casdastrar Trabalho</p>
-              <input {...register("title")} />
+              <input maxLength="13" {...register("title")} />
               <input maxLength="80" {...register("description")} />
               <input {...register("deploy_url")} />
               <Button type="submit">Cadastrar</Button>

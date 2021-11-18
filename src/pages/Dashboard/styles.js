@@ -12,9 +12,6 @@ export const ContainerTitle = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: var(--white);
-  /* margin-bottom: 10px;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 1); */
-  /* box-shadow: inset 0px -5px 10px 0px rgba(0, 0, 0, 0.1); */
 
   div {
     display: flex;
@@ -30,6 +27,7 @@ export const ContainerTitle = styled.div`
       font-size: 1rem;
       margin: 0px 5px;
       height: 30px;
+      padding: 0px 5px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,6 +44,13 @@ export const ContainerTitle = styled.div`
     padding: 10px;
     font-size: 1rem;
     font-weight: bold;
+  }
+
+  @media (min-width: 426px) {
+    h1 {
+      margin: 20px 10px;
+      font-size: 1.5rem;
+    }
   }
 `;
 
@@ -73,6 +78,19 @@ export const ContainerTechs = styled.div`
       margin-right: 10px;
     }
   }
+
+  @media (min-width: 426px) {
+    section {
+      p {
+        margin-left: 20px;
+        font-size: 1.3rem;
+      }
+
+      button {
+        padding: 10px 15px;
+      }
+    }
+  }
 `;
 
 export const ContainerWorks = styled.div`
@@ -98,6 +116,19 @@ export const ContainerWorks = styled.div`
       margin-right: 10px;
     }
   }
+
+  @media (min-width: 426px) {
+    section {
+      p {
+        margin-left: 20px;
+        font-size: 1.3rem;
+      }
+
+      button {
+        padding: 10px 15px;
+      }
+    }
+  }
 `;
 
 export const ContainerUlTechs = styled.ul`
@@ -117,6 +148,15 @@ export const ContainerUlTechs = styled.ul`
     justify-content: start;
     margin: 10px 0;
     border-right: 4px solid var(--grey-0);
+
+    :hover {
+      border-color: var(--green);
+
+      h1 {
+        background-color: var(--green);
+        color: var(--white);
+      }
+    }
 
     div {
       display: flex;
@@ -170,6 +210,15 @@ export const ContainerUlWorks = styled.ul`
     justify-content: start;
     margin: 10px 0;
     border-right: 4px solid var(--grey-0);
+
+    :hover {
+      border-color: var(--purple);
+
+      h1 {
+        background-color: var(--purple);
+        color: var(--white);
+      }
+    }
 
     div {
       display: flex;
