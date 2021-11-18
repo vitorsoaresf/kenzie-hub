@@ -2,14 +2,20 @@ import {
   Container,
   ContainerWorks,
   ContainerModal,
-  ContainerUl,
+  ContainerUlTechs,
+  ContainerUlWorks,
   ContainerTitle,
   ContainerTechs,
 } from "./styles";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FiArrowRight, FiUser, FiCodesandbox } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiUser,
+  FiCodesandbox,
+  FiGitPullRequest,
+} from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
@@ -83,7 +89,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <p>Minhas Tecnologias</p>
           <button onClick={() => setRegisterTech(true)}>+</button>
         </section>
-        <ContainerUl>
+        <ContainerUlTechs>
           {user.techs.map((tech, index) => (
             <li key={index}>
               <h1>{<FiCodesandbox />}</h1>
@@ -93,7 +99,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
               </div>
             </li>
           ))}
-        </ContainerUl>
+        </ContainerUlTechs>
         {registerTech && (
           <ContainerModal>
             <form onSubmit={handleSubmit(onSubmitTech)}>
@@ -108,29 +114,32 @@ function Dashboard({ authenticated, setAuthenticated }) {
 
       {/* MEUS TRABALHOS */}
       <ContainerWorks>
-        <div>
+        <section>
           <p>Meus Trabalhos</p>
           <button onClick={() => setRegisterWork(true)}>+</button>
-        </div>
-        <ContainerUl>
+        </section>
+        <ContainerUlWorks>
           {user.works.map((work, index) => (
             <li key={index}>
-              <a href={work.deploy_url}>
-                <h1>{<FiArrowRight />}</h1>
-                <div>
-                  <h3>{work.title}</h3>
-                  <p>{work.description}</p>
-                </div>
-              </a>
+              {/* <a href={work.deploy_url}> */}
+              <h1>{<FiGitPullRequest />}</h1>
+              <div>
+                <h3>{work.title}</h3>
+                <p>{work.description}</p>
+                <a target="_blank" href={work.deploy_url}>
+                  Link da aplicação
+                </a>
+              </div>
+              {/* </a> */}
             </li>
           ))}
-        </ContainerUl>
+        </ContainerUlWorks>
         {registerWork && (
           <ContainerModal>
             <form onSubmit={handleSubmit(onSubmitWork)}>
               <p>Casdastrar Trabalho</p>
               <input {...register("title")} />
-              <input {...register("description")} />
+              <input maxLength="80" {...register("description")} />
               <input {...register("deploy_url")} />
               <Button type="submit">Cadastrar</Button>
             </form>

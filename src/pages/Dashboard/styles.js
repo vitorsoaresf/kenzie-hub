@@ -76,7 +76,7 @@ export const ContainerTechs = styled.div`
 `;
 
 export const ContainerWorks = styled.div`
-  div {
+  section {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -100,7 +100,7 @@ export const ContainerWorks = styled.div`
   }
 `;
 
-export const ContainerUl = styled.ul`
+export const ContainerUlTechs = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -143,6 +143,68 @@ export const ContainerUl = styled.ul`
     h1 {
       background-color: #e7f5ef;
       color: var(--green);
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      border-radius: 10px;
+    }
+  }
+`;
+
+export const ContainerUlWorks = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  padding: 0;
+  margin: 0;
+
+  li {
+    width: 90%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 10px 0;
+    border-right: 4px solid var(--grey-0);
+
+    div {
+      display: flex;
+      flex-direction: column;
+      height: 50px;
+      background: unset;
+      align-items: flex-start;
+      justify-content: center;
+
+      h3 {
+        margin: 0 10px;
+      }
+
+      p {
+        font-size: 0.7rem;
+        margin: 0px 10px;
+        text-overflow: ellipsis;
+        color: var(--grey-50);
+        font-weight: 500;
+        border-radius: 10px;
+      }
+
+      a {
+        font-size: 0.7rem;
+        margin: 0px 10px;
+        text-overflow: ellipsis;
+        color: var(--purple);
+        font-weight: 500;
+        border-radius: 10px;
+      }
+    }
+
+    h1 {
+      background-color: #ececf7;
+      color: var(--purple);
       font-size: 2rem;
       display: flex;
       justify-content: center;
