@@ -282,7 +282,6 @@ export const ContainerUser = styled.div`
       color: var(--white);
       border-radius: 100%;
       background-color: var(--purple);
-      /* border: 1px solid var(--white); */
     }
 
     div {
