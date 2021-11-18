@@ -264,6 +264,123 @@ export const ContainerUlWorks = styled.ul`
   }
 `;
 
+export const ContainerUser = styled.div`
+  display: flex;
+  flex-direction: column;
+  header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: var(--purple);
+    color: var(--white);
+    border-radius: 10px;
+
+    svg {
+      margin: 10px 10px;
+      font-size: 3rem;
+      color: var(--white);
+      border-radius: 100%;
+      background-color: var(--purple);
+      /* border: 1px solid var(--white); */
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+
+      h3,
+      p,
+      span {
+        margin: 0;
+      }
+
+      p {
+        color: var(--grey-0);
+        font-size: 0.7rem;
+      }
+
+      span {
+        color: var(--grey-50);
+        font-size: 0.7rem;
+        font-style: italic;
+      }
+    }
+  }
+
+  main {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    section,
+    article {
+      background-color: var(--grey-0);
+      display: flex;
+      align-items: center;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 5px;
+
+      svg {
+        color: var(--white);
+        background-color: var(--purple);
+        font-size: 2rem;
+        padding: 10px 10px;
+        margin: 10px 5px;
+      }
+
+      div {
+        p,
+        span {
+          margin: 0;
+        }
+
+        p {
+          font-weight: 600;
+          color: var(--grey-100);
+        }
+
+        span {
+          font-weight: 600;
+          color: var(--grey-50);
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    article {
+      background-color: #e7f5ef;
+      color: var(--white);
+
+      svg {
+        color: var(--);
+        background-color: var(--green);
+      }
+    }
+
+    button {
+      width: 80%;
+      border: none;
+      border-radius: 10px;
+      padding: 20px 15px;
+      color: var(--grey-50);
+      font-weight: 600;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 1s;
+
+      :hover {
+        background-color: var(--grey-50);
+        color: var(--white);
+      }
+    }
+  }
+`;
+
 export const ContainerModal = styled.div`
   position: absolute;
   display: flex;

@@ -6,11 +6,18 @@ import {
   ContainerUlWorks,
   ContainerTitle,
   ContainerTechs,
+  ContainerUser,
 } from "./styles";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FiUser, FiCodesandbox, FiGitPullRequest } from "react-icons/fi";
+import {
+  FiUser,
+  FiCodesandbox,
+  FiGitPullRequest,
+  FiSmartphone,
+  FiMail,
+} from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
@@ -80,15 +87,6 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <h1>Kenzie</h1>
           <h2>Hub</h2>
         </div>
-
-        <button
-          onClick={() => {
-            setAuthenticated(false);
-            localStorage.clear();
-          }}
-        >
-          <FiUser />
-        </button>
       </ContainerTitle>
 
       {/* MINHAS TECNOLOGIAS */}
@@ -152,6 +150,42 @@ function Dashboard({ authenticated, setAuthenticated }) {
           </ContainerModal>
         )}
       </ContainerWorks>
+
+      {/* USER */}
+      <ContainerUser>
+        <header>
+          <FiUser />
+          <div>
+            <h3>{user.name}</h3>
+            <p>{user.course_module} Módulo</p>
+            <span>{user.bio}</span>
+          </div>
+        </header>
+        <main>
+          <section>
+            <FiSmartphone />
+            <div>
+              <p>Ligar agora</p>
+              <span>{user.contact}</span>
+            </div>
+          </section>
+          <article>
+            <FiMail />
+            <div>
+              <p>Enviar email</p>
+              <span>{user.email}</span>
+            </div>
+          </article>
+          <button
+            onClick={() => {
+              setAuthenticated(false);
+              localStorage.clear();
+            }}
+          >
+            Sair
+          </button>
+        </main>
+      </ContainerUser>
     </Container>
   );
 }
