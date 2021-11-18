@@ -49,7 +49,6 @@ export const ContainerRadio = styled.div`
   }
 
   div {
-    background-color: violet;
     label {
       background-color: var(--grey-0);
       font-size: 0.7rem;

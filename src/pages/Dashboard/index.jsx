@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FiArrowRight, FiUser, FiArrowLeft } from "react-icons/fi";
+import { FiArrowRight, FiUser, FiCodesandbox } from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
 
@@ -86,7 +86,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
         <ContainerUl>
           {user.techs.map((tech, index) => (
             <li key={index}>
-              <h1>{<FiArrowRight />}</h1>
+              <h1>{<FiCodesandbox />}</h1>
               <div>
                 <h3>{tech.title}</h3>
                 <p>{tech.status}</p>

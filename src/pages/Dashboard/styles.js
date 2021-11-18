@@ -104,36 +104,42 @@ export const ContainerUl = styled.ul`
 
   li {
     display: flex;
+    align-items: center;
+    justify-content: start;
     margin: 10px 0;
-    background-color: aliceblue;
-  }
 
-  img {
-    width: 50px;
-    height: 50px;
-  }
+    div {
+      display: flex;
+      flex-direction: column;
+      height: 50px;
+      background: unset;
+      align-items: flex-start;
+      justify-content: center;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+      h3 {
+        margin: 0 10px;
+      }
 
-  h1 {
-    background-color: violet;
-    font-size: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+      p {
+        margin: 5px 10px;
+        background-color: #e7f5ef;
+        color: var(--green);
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 10px;
+      }
+    }
 
-  h3 {
-    margin: 0;
-  }
-
-  p {
-    margin: 0;
+    h1 {
+      background-color: #e7f5ef;
+      color: var(--green);
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      border-radius: 10px;
+    }
   }
 `;
 

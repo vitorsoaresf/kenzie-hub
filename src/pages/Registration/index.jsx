@@ -31,7 +31,7 @@ function Registration() {
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
     bio: yup.string().required("Biografia obrigatória"),
     contact: yup.string().required("Telefone obrigatório"),
-    course_module: yup.string().required("Modulo obrigatório"),
+    course_module: yup.string().required("Módulo Obrigatório"),
     password: yup
       .string()
       .required("Senha obrigatória")
@@ -39,6 +39,7 @@ function Registration() {
     confirm_password: yup
       .string()
       .oneOf([yup.ref("password"), null], "Senhas diferentes!"),
+    // accept: yup.boolean().oneOf([true], "you accept the terms of use?"),
   });
 
   const {
@@ -98,40 +99,43 @@ function Registration() {
           name="contact"
           error={errors.contact?.message}
         />
-        {/* <Input
-          icon={FiArrowRight}
+        <Input
+          icon={FiPhone}
           type="text"
           placeholder="Modulo"
           register={register}
           name="course_module"
           error={errors.course_module?.message}
-        /> */}
-        <ContainerRadio>
+        />
+
+        {/* <ContainerRadio>
           <div>
-            <input type="radio" id="primeiro" name="select" value="huey" />
-            <label for="primeiro">Primeiro</label>
+            <input
+              {...register("course_module")}
+              type="radio"
+              id="primeiro"
+              name="select"
+              value="primeiro"
+              error={errors.course_module?.message}
+            />
+            <label htmlFor="primeiro">Primeiro</label>
           </div>
 
           <div>
-            <input type="radio" id="segundo" name="select" value="dewey" />
-            <label for="segundo">Segundo</label>
+            <input type="radio" id="segundo" name="select" value="segundo" />
+            <label htmlFor="segundo">Segundo</label>
           </div>
 
           <div>
-            <input type="radio" id="terceiro" name="select" value="dewey" />
-            <label for="terceiro">Terceiro</label>
+            <input type="radio" id="terceiro" name="select" value="terceiro" />
+            <label htmlFor="terceiro">Terceiro</label>
           </div>
 
           <div>
-            <input type="radio" id="quarto" name="select" value="dewey" />
-            <label for="quarto">Quarto</label>
+            <input type="radio" id="quarto" name="select" value="quarto" />
+            <label htmlFor="quarto">Quarto</label>
           </div>
-
-          {/* <div>
-            <input type="radio" id="louie" name="drone" value="louie" />
-            <label for="louie">Louie</label>
-          </div> */}
-        </ContainerRadio>
+        </ContainerRadio> */}
         <Input
           icon={FiLock}
           type="password"
