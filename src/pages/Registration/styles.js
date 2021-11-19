@@ -1,11 +1,74 @@
 import styled from "styled-components";
 
-export const Container = styled.form`
+export const Container = styled.div`
+  background-color: var(--white);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContainerTitle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  width: 100vw;
+  max-width: 310px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 10px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      margin: 0px 5px;
+      height: 30px;
+      padding: 0px 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--purple);
+      color: var(--white);
+      border-radius: 5px;
+    }
+  }
+
+  button {
+    margin-right: 10px;
+    border-radius: 100%;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  @media (min-width: 426px) {
+    h1 {
+    }
+  }
+  @media (min-width: 1024px) {
+  }
+`;
+
+export const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--grey-50);
+  margin-top: 10px;
+
+  button {
+    margin-top: 50px;
+  }
 `;
 
 export const ContainerUl = styled.ul`
@@ -13,7 +76,6 @@ export const ContainerUl = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* align-items: flex-s; */
   font-size: 0.7rem;
   list-style: none;
 `;

@@ -3,6 +3,8 @@ import {
   ContainerUl,
   ContainerRadio,
   ContainerModal,
+  ContainerForm,
+  ContainerTitle,
 } from "./styles";
 import {
   FiUser,
@@ -65,8 +67,14 @@ function Registration() {
   };
 
   return (
-    <>
-      <Container onSubmit={handleSubmit(onSubmitFunction)}>
+    <Container>
+      <ContainerTitle>
+        <div>
+          <h1>Kenzie</h1>
+          <h2>Hub</h2>
+        </div>
+      </ContainerTitle>
+      <ContainerForm onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
           icon={FiUser}
           type="text"
@@ -155,7 +163,7 @@ function Registration() {
         <Button color="purple" type="submit">
           Cadastrar
         </Button>
-      </Container>
+      </ContainerForm>
 
       {registration && (
         <ContainerModal>
@@ -165,7 +173,7 @@ function Registration() {
           </div>
         </ContainerModal>
       )}
-    </>
+    </Container>
   );
 }
 
