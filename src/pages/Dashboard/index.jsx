@@ -81,112 +81,113 @@ function Dashboard({ authenticated, setAuthenticated }) {
   }
 
   return (
-    <Container>
+    <>
       <ContainerTitle>
         <div>
           <h1>Kenzie</h1>
           <h2>Hub</h2>
         </div>
       </ContainerTitle>
-
-      {/* MINHAS TECNOLOGIAS */}
-      <ContainerTechs>
-        <section>
-          <p>Minhas Tecnologias</p>
-          <button onClick={() => setRegisterTech(true)}>+</button>
-        </section>
-        <ContainerUlTechs>
-          {user.techs.map((tech, index) => (
-            <li key={index}>
-              <h1>{<FiCodesandbox />}</h1>
-              <div>
-                <h3>{tech.title}</h3>
-                <p>{tech.status}</p>
-              </div>
-            </li>
-          ))}
-        </ContainerUlTechs>
-        {registerTech && (
-          <ContainerModal>
-            <form onSubmit={handleSubmit(onSubmitTech)}>
-              <p>Casdastrar Tecnologia</p>
-              <input maxLength="15" {...register("title")} />
-              <input maxLength="15" {...register("status")} />
-              <Button type="submit">Cadastrar</Button>
-            </form>
-          </ContainerModal>
-        )}
-      </ContainerTechs>
-
-      {/* MEUS TRABALHOS */}
-      <ContainerWorks>
-        <section>
-          <p>Meus Trabalhos</p>
-          <button onClick={() => setRegisterWork(true)}>+</button>
-        </section>
-        <ContainerUlWorks>
-          {user.works.map((work, index) => (
-            <li key={index}>
-              <h1>{<FiGitPullRequest />}</h1>
-              <div>
-                <h3>{work.title}</h3>
-                <p>{work.description}</p>
-                <a target="_blank" href={work.deploy_url}>
-                  Link da aplicação
-                </a>
-              </div>
-            </li>
-          ))}
-        </ContainerUlWorks>
-        {registerWork && (
-          <ContainerModal>
-            <form onSubmit={handleSubmit(onSubmitWork)}>
-              <p>Casdastrar Trabalho</p>
-              <input maxLength="13" {...register("title")} />
-              <input maxLength="80" {...register("description")} />
-              <input {...register("deploy_url")} />
-              <Button type="submit">Cadastrar</Button>
-            </form>
-          </ContainerModal>
-        )}
-      </ContainerWorks>
-
-      {/* USER */}
-      <ContainerUser>
-        <header>
-          <FiUser />
-          <div>
-            <h3>{user.name}</h3>
-            <p>{user.course_module} Módulo</p>
-            <span>{user.bio}</span>
-          </div>
-        </header>
-        <main>
+      <Container>
+        {/* MINHAS TECNOLOGIAS */}
+        <ContainerTechs>
           <section>
-            <FiSmartphone />
-            <div>
-              <p>Ligar agora</p>
-              <span>{user.contact}</span>
-            </div>
+            <p>Minhas Tecnologias</p>
+            <button onClick={() => setRegisterTech(true)}>+</button>
           </section>
-          <article>
-            <FiMail />
+          <ContainerUlTechs>
+            {user.techs.map((tech, index) => (
+              <li key={index}>
+                <h1>{<FiCodesandbox />}</h1>
+                <div>
+                  <h3>{tech.title}</h3>
+                  <p>{tech.status}</p>
+                </div>
+              </li>
+            ))}
+          </ContainerUlTechs>
+          {registerTech && (
+            <ContainerModal>
+              <form onSubmit={handleSubmit(onSubmitTech)}>
+                <p>Casdastrar Tecnologia</p>
+                <input maxLength="15" {...register("title")} />
+                <input maxLength="15" {...register("status")} />
+                <Button type="submit">Cadastrar</Button>
+              </form>
+            </ContainerModal>
+          )}
+        </ContainerTechs>
+
+        {/* MEUS TRABALHOS */}
+        <ContainerWorks>
+          <section>
+            <p>Meus Trabalhos</p>
+            <button onClick={() => setRegisterWork(true)}>+</button>
+          </section>
+          <ContainerUlWorks>
+            {user.works.map((work, index) => (
+              <li key={index}>
+                <h1>{<FiGitPullRequest />}</h1>
+                <div>
+                  <h3>{work.title}</h3>
+                  <p>{work.description}</p>
+                  <a target="_blank" href={work.deploy_url}>
+                    Link da aplicação
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ContainerUlWorks>
+          {registerWork && (
+            <ContainerModal>
+              <form onSubmit={handleSubmit(onSubmitWork)}>
+                <p>Casdastrar Trabalho</p>
+                <input maxLength="13" {...register("title")} />
+                <input maxLength="80" {...register("description")} />
+                <input {...register("deploy_url")} />
+                <Button type="submit">Cadastrar</Button>
+              </form>
+            </ContainerModal>
+          )}
+        </ContainerWorks>
+
+        {/* USER */}
+        <ContainerUser>
+          <header>
+            <FiUser />
             <div>
-              <p>Enviar email</p>
-              <span>{user.email}</span>
+              <h3>{user.name}</h3>
+              <p>{user.course_module} Módulo</p>
+              <span>{user.bio}</span>
             </div>
-          </article>
-          <button
-            onClick={() => {
-              setAuthenticated(false);
-              localStorage.clear();
-            }}
-          >
-            Sair
-          </button>
-        </main>
-      </ContainerUser>
-    </Container>
+          </header>
+          <main>
+            <section>
+              <FiSmartphone />
+              <div>
+                <p>Ligar agora</p>
+                <span>{user.contact}</span>
+              </div>
+            </section>
+            <article>
+              <FiMail />
+              <div>
+                <p>Enviar email</p>
+                <span>{user.email}</span>
+              </div>
+            </article>
+            <button
+              onClick={() => {
+                setAuthenticated(false);
+                localStorage.clear();
+              }}
+            >
+              Sair
+            </button>
+          </main>
+        </ContainerUser>
+      </Container>
+    </>
   );
 }
 
