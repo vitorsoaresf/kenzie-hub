@@ -3,6 +3,7 @@ import {
   ContainerForm,
   ContainerInfo,
   ContainerTitle,
+  ContainerBody,
 } from "./styles";
 import { FiUser, FiLock } from "react-icons/fi";
 import * as yup from "yup";
@@ -48,12 +49,12 @@ function Home({ authenticated, setAuthenticated }) {
   }
 
   return (
-    <>
+    <Container>
       <ContainerTitle>
         <h1>Kenzie</h1>
         <h2>Hub</h2>
       </ContainerTitle>
-      <Container>
+      <ContainerBody>
         <ContainerForm onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
             icon={FiUser}
@@ -82,8 +83,8 @@ function Home({ authenticated, setAuthenticated }) {
         <Button color="grey" onClick={() => history.push("/registration")}>
           Cadastrar
         </Button>
-      </Container>
-    </>
+      </ContainerBody>
+    </Container>
   );
 }
 

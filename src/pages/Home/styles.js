@@ -5,7 +5,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--grey-0);
+  height: 100vh;
+  background-color: var(--white);
+`;
+export const ContainerBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--white);
   text-align: center;
   border-radius: 5px;
