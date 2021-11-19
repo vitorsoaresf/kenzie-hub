@@ -1,12 +1,14 @@
 import {
   Container,
   ContainerWorks,
-  ContainerModal,
+  ContainerModalTech,
+  ContainerModalWork,
   ContainerUlTechs,
   ContainerUlWorks,
   ContainerTitle,
   ContainerTechs,
   ContainerUser,
+  ContainerBody,
 } from "./styles";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
@@ -52,7 +54,9 @@ function Dashboard({ authenticated, setAuthenticated }) {
       })
       .catch((err) => console.log("Usuário não registrado!", err));
 
-    user.techs = [...user.techs, data];
+    if (data.title !== "" && data.status !== "") {
+      user.techs = [...user.techs, data];
+    }
 
     reset();
     setRegisterTech(false);
@@ -69,7 +73,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
       })
       .catch((err) => console.log("Usuário não registrado!", err));
 
-    if (data.title !== "" && data.status !== "") {
+    if (data.title !== "" && data.description !== "") {
       user.works = [...user.works, data];
     }
     reset();
@@ -88,7 +92,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <h2>Hub</h2>
         </div>
       </ContainerTitle>
-      <Container>
+      <ContainerBody>
         {/* MINHAS TECNOLOGIAS */}
         <ContainerTechs>
           <section>
@@ -107,14 +111,22 @@ function Dashboard({ authenticated, setAuthenticated }) {
             ))}
           </ContainerUlTechs>
           {registerTech && (
-            <ContainerModal>
+            <ContainerModalTech>
               <form onSubmit={handleSubmit(onSubmitTech)}>
-                <p>Casdastrar Tecnologia</p>
-                <input maxLength="15" {...register("title")} />
-                <input maxLength="15" {...register("status")} />
+                <p>Cadastrar Tecnologia</p>
+                <input
+                  placeholder="Nome da Tecnologia"
+                  maxLength="15"
+                  {...register("title")}
+                />
+                <input
+                  placeholder="Status"
+                  maxLength="15"
+                  {...register("status")}
+                />
                 <Button type="submit">Cadastrar</Button>
               </form>
-            </ContainerModal>
+            </ContainerModalTech>
           )}
         </ContainerTechs>
 
@@ -139,15 +151,23 @@ function Dashboard({ authenticated, setAuthenticated }) {
             ))}
           </ContainerUlWorks>
           {registerWork && (
-            <ContainerModal>
+            <ContainerModalWork>
               <form onSubmit={handleSubmit(onSubmitWork)}>
-                <p>Casdastrar Trabalho</p>
-                <input maxLength="13" {...register("title")} />
-                <input maxLength="80" {...register("description")} />
-                <input {...register("deploy_url")} />
+                <p>Cadastrar Trabalho</p>
+                <input
+                  placeholder="Nome do Trabalho"
+                  maxLength="13"
+                  {...register("title")}
+                />
+                <input
+                  placeholder="Descrição"
+                  maxLength="80"
+                  {...register("description")}
+                />
+                <input placeholder="URL" {...register("deploy_url")} />
                 <Button type="submit">Cadastrar</Button>
               </form>
-            </ContainerModal>
+            </ContainerModalWork>
           )}
         </ContainerWorks>
 
@@ -186,7 +206,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
             </button>
           </main>
         </ContainerUser>
-      </Container>
+      </ContainerBody>
     </>
   );
 }

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ContainerBody = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+
   background-color: var(--grey-0);
 
   @media (min-width: 1024px) {
@@ -433,8 +434,8 @@ export const ContainerUser = styled.div`
   }
 `;
 
-export const ContainerModal = styled.div`
-  position: absolute;
+export const ContainerModalTech = styled.div`
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -444,17 +445,113 @@ export const ContainerModal = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
+  left: 0;
 
   form {
+    background-color: var(--white);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: aliceblue;
+    align-items: flex-start;
     width: 250px;
-    height: 30vh;
+    border-radius: 10px;
+
+    button,
+    p,
+    input {
+      margin: 10px auto;
+    }
+
+    p {
+      color: var(--grey-100);
+      font-weight: 600;
+    }
+
+    input {
+      background-color: var(--grey-0);
+      border: none;
+      border-radius: 10px;
+      width: 85%;
+      height: 50px;
+    }
+
+    button {
+      background-color: var(--green);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      width: 87%;
+      height: 50px;
+      cursor: pointer;
+      transition: background-color 1s;
+
+      :hover {
+        background-color: #0c6d41;
+      }
+    }
+  }
+`;
+
+export const ContainerModalWork = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: bisque;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+
+  form {
+    background-color: var(--white);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+    border-radius: 10px;
+
+    button,
+    p,
+    input {
+      margin: 10px auto;
+    }
+
+    p {
+      color: var(--grey-100);
+      font-weight: 600;
+    }
+
+    input {
+      background-color: var(--grey-0);
+      border: none;
+      border-radius: 10px;
+      width: 85%;
+      height: 50px;
+    }
+
+    button {
+      background-color: var(--purple);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      width: 87%;
+      height: 50px;
+      cursor: pointer;
+      transition: background-color 1s;
+
+      :hover {
+        background-color: #5752e5;
+      }
+    }
   }
 `;
