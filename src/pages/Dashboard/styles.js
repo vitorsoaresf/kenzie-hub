@@ -210,6 +210,22 @@ export const ContainerUlTechs = styled.ul`
 
       h3 {
         margin: 0 10px;
+        display: flex;
+
+        button {
+          color: var(--grey-100);
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          background-color: unset;
+          border-radius: 5px;
+          margin-left: 5px;
+
+          :hover {
+            background-color: var(--grey-50);
+            color: var(--white);
+          }
+        }
       }
 
       p {
@@ -279,6 +295,22 @@ export const ContainerUlWorks = styled.ul`
 
       h3 {
         margin: 0 10px;
+        display: flex;
+
+        button {
+          color: var(--grey-100);
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          background-color: unset;
+          border-radius: 5px;
+          margin-left: 5px;
+
+          :hover {
+            background-color: var(--grey-50);
+            color: var(--white);
+          }
+        }
       }
 
       p {
@@ -292,11 +324,13 @@ export const ContainerUlWorks = styled.ul`
 
       a {
         font-size: 0.7rem;
-        margin: 0px 10px;
+        margin: 5px 10px;
         text-overflow: ellipsis;
         color: var(--purple);
         font-weight: 500;
         border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
       }
     }
 

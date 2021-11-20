@@ -22,12 +22,14 @@ import {
 } from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
+import toast from "react-hot-toast";
 
 function Dashboard({ authenticated, setAuthenticated }) {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:user")) || ""
   );
-  const [userTechs, setUserTechs] = useState([]);
+  const [userTechs, setUserTechs] = useState([...user.techs]);
+  const [userWorks, setUserWorks] = useState([...user.works]);
 
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:token")) || ""
@@ -55,9 +57,9 @@ function Dashboard({ authenticated, setAuthenticated }) {
       .catch((err) => console.log("Usuário não registrado!", err));
 
     if (data.title !== "" && data.status !== "") {
-      user.techs = [...user.techs, data];
+      setUserTechs([...userTechs, data]);
+      toast.success("Tecnologia adicionada com sucesso");
     }
-
     reset();
     setRegisterTech(false);
   };
@@ -74,10 +76,34 @@ function Dashboard({ authenticated, setAuthenticated }) {
       .catch((err) => console.log("Usuário não registrado!", err));
 
     if (data.title !== "" && data.description !== "") {
-      user.works = [...user.works, data];
+      setUserWorks([...userWorks, data]);
+      toast.success("Trabalho adicionado com sucesso");
     }
     reset();
     setRegisterWork(false);
+  };
+
+  const deteleWork = (work_id) => {
+    api
+      .delete(`/users/works/${work_id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => console.log("Excluído com sucesso!"))
+      .catch((err) => console.log(err));
+    toast.success("Trabalho removido com sucesso");
+    setUserWorks(userWorks.filter((element) => element.id !== work_id));
+  };
+
+  const deteleTech = (tech_id) => {
+    console.log(tech_id);
+    api
+      .delete(`/users/techs/${tech_id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => console.log("Excluído com sucesso!"))
+      .catch((err) => console.log(err));
+    toast.success("Tecnologia removida com sucesso");
+    setUserTechs(userTechs.filter((element) => element.id !== tech_id));
   };
 
   if (!authenticated) {
@@ -109,11 +135,14 @@ function Dashboard({ authenticated, setAuthenticated }) {
             <button onClick={() => setRegisterTech(true)}>+</button>
           </section>
           <ContainerUlTechs>
-            {user.techs.map((tech, index) => (
+            {userTechs.map((tech, index) => (
               <li key={index}>
                 <h1>{<FiCodesandbox />}</h1>
                 <div>
-                  <h3>{tech.title}</h3>
+                  <h3>
+                    {tech.title}{" "}
+                    <button onClick={() => deteleTech(tech.id)}>x</button>
+                  </h3>
                   <p>{tech.status}</p>
                 </div>
               </li>
@@ -156,11 +185,14 @@ function Dashboard({ authenticated, setAuthenticated }) {
             <button onClick={() => setRegisterWork(true)}>+</button>
           </section>
           <ContainerUlWorks>
-            {user.works.map((work, index) => (
+            {userWorks.map((work, index) => (
               <li key={index}>
                 <h1>{<FiGitPullRequest />}</h1>
                 <div>
-                  <h3>{work.title}</h3>
+                  <h3>
+                    {work.title}
+                    <button onClick={() => deteleWork(work.id)}>x</button>
+                  </h3>
                   <p>{work.description}</p>
                   <a target="_blank" href={work.deploy_url}>
                     Link da aplicação
