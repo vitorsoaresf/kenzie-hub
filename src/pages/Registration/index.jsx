@@ -1,19 +1,10 @@
 import {
   Container,
-  ContainerUl,
-  ContainerRadio,
   ContainerModal,
   ContainerForm,
   ContainerTitle,
 } from "./styles";
-import {
-  FiUser,
-  FiMail,
-  FiLock,
-  FiPhone,
-  FiBook,
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiUser, FiMail, FiLock, FiPhone, FiBook } from "react-icons/fi";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -23,6 +14,7 @@ import Button from "../../components/Button";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+
 function Registration() {
   const [registration, setRegistration] = useState(false);
 

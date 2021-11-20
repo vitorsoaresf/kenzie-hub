@@ -8,12 +8,8 @@ export const Container = styled.div`
     font-size: 0.6rem;
     position: absolute;
     left: 56%;
-    /* top: 50%; */
-    /* margin-bottom: 50px; */
     transform: translateX(-50%);
-    /* transform: translateY(100%); */
     color: red;
-    /* left: 0; */
     text-align: start;
     background-color: var(--white);
   }
@@ -40,7 +36,6 @@ export const ContainerInput = styled.div`
     -moz-transition: all 0.3s ease-out;
     -webkit-appearance: none;
     border-radius: 10px;
-    /* margin: 10px 0; */
   }
 
   input:focus {

@@ -111,7 +111,6 @@ export const ContainerModal = styled.div`
 
     p {
       color: var(--grey-50);
-      /* font-weight: 600; */
     }
 
     span {
