@@ -46,12 +46,21 @@ export const ContainerTitle = styled.div`
   }
 
   button {
+    background-color: unset;
+    color: var(--gray-100);
     margin-right: 10px;
     border-radius: 100%;
     border: none;
     padding: 10px;
     font-size: 1rem;
     font-weight: bold;
+    cursor: pointer;
+    transition: font-size 1s;
+
+    :hover {
+      font-size: 2rem;
+      color: #c0392b;
+    }
   }
 
   @media (min-width: 426px) {
@@ -467,6 +476,13 @@ export const ContainerModalTech = styled.div`
     p {
       color: var(--grey-100);
       font-weight: 600;
+
+      button {
+        position: relative;
+        width: 40px;
+        height: 30px;
+        margin-left: 10px;
+      }
     }
 
     input {
@@ -528,6 +544,17 @@ export const ContainerModalWork = styled.div`
     p {
       color: var(--grey-100);
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+
+      button {
+        position: relative;
+        width: 40px;
+        height: 30px;
+        margin-left: 30px;
+      }
     }
 
     input {

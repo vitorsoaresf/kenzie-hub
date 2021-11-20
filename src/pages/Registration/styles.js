@@ -81,10 +81,52 @@ export const ContainerUl = styled.ul`
 `;
 
 export const ContainerModal = styled.div`
+  position: fixed;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: bisque;
+  width: 100vw;
   height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
 
   div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: 10px;
+    width: 310px;
+    height: 200px;
+
+    h3,
+    p,
+    span {
+      margin: 5px 0;
+    }
+
+    p {
+      color: var(--grey-50);
+      /* font-weight: 600; */
+    }
+
+    span {
+      color: var(--grey-100);
+      font-size: 0.7rem;
+    }
+
+    button {
+      background-color: var(--green);
+      color: var(--white);
+
+      :hover {
+        background-color: #0f6840;
+      }
+    }
   }
 `;
 

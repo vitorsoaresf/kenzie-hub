@@ -19,6 +19,7 @@ import {
   FiGitPullRequest,
   FiSmartphone,
   FiMail,
+  FiLogOut,
 } from "react-icons/fi";
 import Button from "../../components/Button";
 import api from "../../services/api";
@@ -91,6 +92,15 @@ function Dashboard({ authenticated, setAuthenticated }) {
           <h1>Kenzie</h1>
           <h2>Hub</h2>
         </div>
+        <button
+          onClick={() => {
+            setAuthenticated(false);
+            localStorage.clear();
+          }}
+        >
+          {" "}
+          <FiLogOut />
+        </button>
       </ContainerTitle>
       <ContainerBody>
         {/* MINHAS TECNOLOGIAS */}
@@ -113,7 +123,17 @@ function Dashboard({ authenticated, setAuthenticated }) {
           {registerTech && (
             <ContainerModalTech>
               <form onSubmit={handleSubmit(onSubmitTech)}>
-                <p>Cadastrar Tecnologia</p>
+                <p>
+                  Cadastrar Tecnologia{" "}
+                  <button
+                    onClick={() => {
+                      reset();
+                      setRegisterTech(false);
+                    }}
+                  >
+                    x
+                  </button>
+                </p>
                 <input
                   placeholder="Nome da Tecnologia"
                   maxLength="15"
@@ -153,7 +173,17 @@ function Dashboard({ authenticated, setAuthenticated }) {
           {registerWork && (
             <ContainerModalWork>
               <form onSubmit={handleSubmit(onSubmitWork)}>
-                <p>Cadastrar Trabalho</p>
+                <p>
+                  Cadastrar Trabalho{" "}
+                  <button
+                    onClick={() => {
+                      reset();
+                      setRegisterTech(false);
+                    }}
+                  >
+                    x
+                  </button>
+                </p>
                 <input
                   placeholder="Nome do Trabalho"
                   maxLength="13"

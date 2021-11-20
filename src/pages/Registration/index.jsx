@@ -37,11 +37,10 @@ function Registration() {
     password: yup
       .string()
       .required("Senha obrigatória")
-      .matches(/^.{6,}$/, "Quantidade Mínima de 6 caractteres"),
+      .matches(/^.{6,}$/, "6 caracteres"),
     confirm_password: yup
       .string()
       .oneOf([yup.ref("password"), null], "Senhas diferentes!"),
-    // accept: yup.boolean().oneOf([true], "you accept the terms of use?"),
   });
 
   const {
@@ -168,8 +167,10 @@ function Registration() {
       {registration && (
         <ContainerModal>
           <div>
-            <p>Olaa</p>
-            <Button onClick={() => history.push("/")}>Yes</Button>
+            <h3>Sucesso!</h3>
+            <p>Seja bem-vindo a nossa plataforma.</p>
+            <span>Agora, basta fazer o seu login e começar sua jornada</span>
+            <Button onClick={() => history.push("/")}>Ir para Login</Button>
           </div>
         </ContainerModal>
       )}

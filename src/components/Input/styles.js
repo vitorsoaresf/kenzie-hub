@@ -6,10 +6,16 @@ export const Container = styled.div`
 
   p {
     font-size: 0.6rem;
-    position: relative;
+    position: absolute;
+    left: 56%;
+    /* top: 50%; */
+    /* margin-bottom: 50px; */
+    transform: translateX(-50%);
+    /* transform: translateY(100%); */
     color: red;
-    left: 0;
+    /* left: 0; */
     text-align: start;
+    background-color: var(--white);
   }
 `;
 
