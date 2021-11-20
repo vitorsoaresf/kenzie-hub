@@ -10,6 +10,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory, Redirect } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -27,6 +28,7 @@ function Home({ authenticated, setAuthenticated }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -41,7 +43,10 @@ function Home({ authenticated, setAuthenticated }) {
         setAuthenticated(true);
         history.push(`/dashboard`);
       })
-      .catch((err) => console.log("Usuário não registrado!", err));
+      .catch((err) => {
+        toast.error("Usuário não Cadastrado!");
+        reset();
+      });
   };
 
   if (authenticated) {
