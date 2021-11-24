@@ -12,6 +12,9 @@ import {
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import {
   FiUser,
   FiCodesandbox,
@@ -28,8 +31,8 @@ function Dashboard({ authenticated, setAuthenticated }) {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:user")) || ""
   );
-  const [userTechs, setUserTechs] = useState([...user.techs]);
-  const [userWorks, setUserWorks] = useState([...user.works]);
+  const [userTechs, setUserTechs] = useState([...(user.techs || [])]);
+  const [userWorks, setUserWorks] = useState([...(user.works || [])]);
 
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("@Kenziehub:token")) || ""
@@ -38,12 +41,20 @@ function Dashboard({ authenticated, setAuthenticated }) {
   const [registerTech, setRegisterTech] = useState(false);
   const [registerWork, setRegisterWork] = useState(false);
 
+  const formSchema = yup.object().shape({
+    title: yup.string().required("Titulo obrigatório"),
+    status: yup.string().required("Status obrigatório"),
+    description: yup.string().required("Descrição obrigatória"),
+    deploy_url: yup.string().required("Link obrigatório"),
+  });
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({});
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
 
   const onSubmitTech = (data) => {
     api
@@ -209,7 +220,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
                   <button
                     onClick={() => {
                       reset();
-                      setRegisterTech(false);
+                      setRegisterWork(false);
                     }}
                   >
                     x
