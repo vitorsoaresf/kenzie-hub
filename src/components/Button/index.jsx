@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-function Button({ children, onClick, color }) {
+function Button({ children, onClick, color, type }) {
   return (
-    <Container color={color} onClick={onClick}>
+    <Container type={type} color={color} onClick={onClick}>
       {children}
     </Container>
   );

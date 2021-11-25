@@ -41,19 +41,19 @@ function Dashboard({ authenticated, setAuthenticated }) {
   const [registerTech, setRegisterTech] = useState(false);
   const [registerWork, setRegisterWork] = useState(false);
 
-  const formSchema = yup.object().shape({
-    title: yup.string().required("Titulo obrigatório"),
-    status: yup.string().required("Status obrigatório"),
-    description: yup.string().required("Descrição obrigatória"),
-    deploy_url: yup.string().required("Link obrigatório"),
-  });
+  // const formSchema = yup.object().shape({
+  //   title: yup.string().required("Titulo obrigatório"),
+  //   status: yup.string().required("Status obrigatório"),
+  //   description: yup.string().required("Descrição obrigatória"),
+  //   deploy_url: yup.string().required("Link obrigatório"),
+  // });
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(formSchema),
+    // resolver: yupResolver(formSchema),
   });
 
   const onSubmitTech = (data) => {
